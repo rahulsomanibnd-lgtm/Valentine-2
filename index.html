@@ -1,0 +1,241 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Ruchi ❤️</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <style>
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: Arial, sans-serif;
+    }
+
+    body {
+      height: 100vh;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      text-align: center;
+      color: white;
+      overflow: hidden;
+      position: relative;
+    }
+
+    /* Background Image Layer */
+    .bg-image {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      z-index: -2;
+    }
+
+    /* Dark Romantic Overlay */
+    .overlay {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(0, 0, 0, 0.55);
+      z-index: -1;
+    }
+
+    h1 {
+      font-size: 32px;
+      padding: 0 20px;
+      margin-bottom: 30px;
+      animation: fadeIn 1.5s ease-in-out;
+    }
+
+    button {
+      padding: 12px 28px;
+      font-size: 18px;
+      margin: 10px;
+      border: none;
+      border-radius: 30px;
+      cursor: pointer;
+      transition: 0.3s ease;
+    }
+
+    #yesBtn {
+      background-color: #ff3366;
+      color: white;
+    }
+
+    #yesBtn:hover {
+      transform: scale(1.1);
+    }
+
+    #noBtn {
+      background-color: #dddddd;
+      color: black;
+    }
+
+    #message {
+      margin-top: 25px;
+      font-size: 20px;
+      min-height: 50px;
+      padding: 0 20px;
+      font-weight: bold;
+      animation: fadeIn 0.5s ease-in-out;
+    }
+
+    /* Floating Hearts */
+    .heart {
+      position: absolute;
+      color: red;
+      animation: float 5s linear infinite;
+    }
+
+    @keyframes float {
+      0% { transform: translateY(100vh); opacity: 1; }
+      100% { transform: translateY(-10vh); opacity: 0; }
+    }
+
+    /* Fade Animation */
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(10px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    /* Dramatic Screen */
+    .dramatic-screen {
+      background: black !important;
+      color: white;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      font-size: 24px;
+      padding: 20px;
+      text-align: center;
+    }
+
+  </style>
+</head>
+<body>
+
+<!-- Background Image -->
+<img src="background.jpg" class="bg-image">
+<div class="overlay"></div>
+
+<h1>Ruchi, Will You Be My Valentine? ❤️</h1>
+
+<button id="yesBtn">Yes 💖</button>
+<button id="noBtn">No 🙈</button>
+
+<div id="message"></div>
+
+<script>
+
+const messages = [
+"You are cutest girl in the world 😍",
+"You glow differently ✨",
+"Your smile makes my day better",
+"You look cute even when you’re angry",
+"Your eyes deserve their own fan club",
+"You make ordinary days feel premium",
+"Stop clicking no, it’s illegal 😌",
+"Even Google says 'Best match: Ruchi ❤️ Rahul'",
+"System error: No is not allowed 😏",
+"One more chance to say yes",
+"I promise good coffee dates ☕",
+"Just imagine us together",
+"You know you want to click yes 💖",
+"Man jao na 🥺",
+"I will never quit 💪❤️"
+];
+
+let count = 0;
+
+const yesBtn = document.getElementById("yesBtn");
+const noBtn = document.getElementById("noBtn");
+const messageDiv = document.getElementById("message");
+
+yesBtn.addEventListener("click", function() {
+  document.body.innerHTML = `
+    <div class="dramatic-screen">
+      <h1>Yayyyy Ruchi!!! 🥰❤️</h1>
+      <h2>Best Decision Ever 💖</h2>
+    </div>
+  `;
+  startConfetti();
+});
+
+noBtn.addEventListener("click", function() {
+
+  messageDiv.textContent = messages[count];
+  count++;
+
+  if (count >= messages.length) {
+    showDramaticScreen();
+    count = 0;
+  }
+
+});
+
+function showDramaticScreen() {
+
+  document.body.className = "dramatic-screen";
+  document.body.innerHTML = `
+    <p>Last warning before I fall harder for you... ❤️</p>
+    <p>This is your final chance to say yes.</p>
+    <p>Because once I choose you… I don’t look back.</p>
+  `;
+
+  setTimeout(() => {
+    location.reload();
+  }, 4000);
+}
+
+/* Floating hearts */
+setInterval(() => {
+  const heart = document.createElement("div");
+  heart.className = "heart";
+  heart.innerHTML = "❤️";
+  heart.style.left = Math.random() * 100 + "vw";
+  heart.style.fontSize = (Math.random() * 20 + 15) + "px";
+  document.body.appendChild(heart);
+
+  setTimeout(() => {
+    heart.remove();
+  }, 5000);
+}, 300);
+
+/* Confetti */
+function startConfetti() {
+  for (let i = 0; i < 150; i++) {
+    const confetti = document.createElement("div");
+    confetti.style.position = "absolute";
+    confetti.style.width = "8px";
+    confetti.style.height = "8px";
+    confetti.style.backgroundColor =
+      "hsl(" + Math.random() * 360 + ",100%,50%)";
+    confetti.style.top = Math.random() * window.innerHeight + "px";
+    confetti.style.left = Math.random() * window.innerWidth + "px";
+    confetti.style.transition = "transform 2s, opacity 2s";
+    document.body.appendChild(confetti);
+
+    setTimeout(() => {
+      confetti.style.transform = "translateY(600px)";
+      confetti.style.opacity = 0;
+    }, 10);
+
+    setTimeout(() => {
+      confetti.remove();
+    }, 2000);
+  }
+}
+
+</script>
+
+</body>
+</html>
